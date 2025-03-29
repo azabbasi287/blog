@@ -28,12 +28,12 @@ namespace blog_datalayer.Context
             }
             base.OnModelCreating(modelBuilder);
         }
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            if (!optionsBuilder.IsConfigured)
-            {
-                optionsBuilder.UseSqlServer("Server=DESKTOP-DUMUDRI\\SQL1;Database=Blog;Integrated Security=true;MultipleActiveResultSets=true");
-            }
-        }
+        //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        //{
+        //    if (!optionsBuilder.IsConfigured)
+        //    {
+        //        optionsBuilder.UseSqlServer("Server=DESKTOP-DUMUDRI\\SQL1;Database=Blog;Integrated Security=true;MultipleActiveResultSets=true");
+        //    }
+        //}
     }
 }
