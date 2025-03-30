@@ -17,4 +17,12 @@
     </PackageReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Utilitis\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\blog-datalayer\blog-datalayer.csproj" />
+  </ItemGroup>
+
 </Project>

@@ -1,10 +1,13 @@
 using blog_datalayer.Context;
+using blog_servises.Servises.Users;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorPages();
+//builder.Services.AddScoped<Userservise, Userservise>();
+builder.Services.AddScoped<Iusers, Userservise>();
 builder.Services.AddDbContext<BlogContext>(options =>
 options.UseSqlServer(builder.Configuration.GetConnectionString("Default")));
 
