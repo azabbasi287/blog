@@ -36,6 +36,27 @@ namespace blog_servises.Servises.Users
             _context.SaveChanges();
             return OperationResult.Success();
         }
+
+        public UserDto LoginUser(UserLoginDto loginDto)
+        {
+            var passwordHashed = loginDto.Password.EncodeToMd5();
+            var user = _context.Users
+                .FirstOrDefault(u => u.UserName == loginDto.UserName && u.Password == passwordHashed);
+
+            if (user == null)
+                return null;
+
+            var userDto = new UserDto()
+            {
+                FullName = user.FullName,
+                Password = user.Password,
+                Role = user.Role,
+                UserName = user.UserName,
+                RegisterDate = user.CreationDate,
+                UserId = user.Id
+            };
+            return userDto;
+        }
     }
         
  }

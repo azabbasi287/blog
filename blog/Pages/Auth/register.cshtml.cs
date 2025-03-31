@@ -8,6 +8,7 @@ using System.ComponentModel.DataAnnotations;
 namespace blog.Pages.Auth
 {
     [BindProperties]
+    [ValidateAntiForgeryToken]
     public class registerModel : PageModel
     {
         private readonly Iusers _Iuser;

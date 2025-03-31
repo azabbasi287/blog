@@ -4,17 +4,17 @@
     Layout = "Shared/_Auth";
     ViewData["title"] = "ورود";
 }
-<form action="">
+<form method="post">
                 <h1>@ViewData["title"]</h1>
                 <div>
-                    <input type="text" placeholder="نام کاربری" required="" id="username" />
+                    <input type="text" placeholder="نام کاربری" asp-for="username" />
                 </div>
                 <div>
-                    <input type="password" placeholder="کلمه عبور" required="" id="password" />
+                    <input type="password" placeholder="کلمه عبور" asp-for="password" />
                 </div>
                 <div>
                     <input type="submit" value="ورود" />
               
                     <a asp-page="register">ثبت نام</a>
                 </div>
-            </form>
+</form>

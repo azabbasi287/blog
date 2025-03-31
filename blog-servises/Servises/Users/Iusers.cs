@@ -11,6 +11,7 @@ namespace blog_servises.Servises.Users
     public interface Iusers
     {
         OperationResult RegisterUser(UserRegisterDto registerDto);
+        UserDto LoginUser(UserLoginDto UserLoginDto);
     }
 }
 

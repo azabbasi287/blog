@@ -1,5 +1,6 @@
 using blog_datalayer.Context;
 using blog_servises.Servises.Users;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -8,6 +9,18 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddRazorPages();
 //builder.Services.AddScoped<Userservise, Userservise>();
 builder.Services.AddScoped<Iusers, Userservise>();
+builder.Services.AddAuthentication(option =>
+{
+    option.DefaultAuthenticateScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+    option.DefaultChallengeScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+    option.DefaultSignInScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+
+}).AddCookie(option =>
+{
+    option.LoginPath = "/Auth/Login";
+    option.LogoutPath = "/Auth/Logout";
+    option.ExpireTimeSpan = TimeSpan.FromDays(35);
+});
 builder.Services.AddDbContext<BlogContext>(options =>
 options.UseSqlServer(builder.Configuration.GetConnectionString("Default")));
 
@@ -25,7 +38,7 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
-
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapRazorPages();
